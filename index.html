@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پادکار | پایان آشفتگی در مدیریت تولید</title>
+    <meta name="description" content="سیستم جامع مدیریت تولید، کیفیت (IMS)، نت و منابع انسانی. جایگزین قدرتمند اکسل برای کارخانه‌های صنعتی.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#020617',     /* Slate 950 */
+                            card: '#0f172a',   /* Slate 900 */
+                            accent: '#3b82f6', /* Blue 500 */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "radial-gradient(circle at center, rgba(59, 130, 246, 0.08) 0%, transparent 70%)",
+                        'grid-pattern': "linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px)"
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* تنظیمات فونت محلی (Local Font Setup) */
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('fonts/Vazir.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('fonts/Vazir-Bold.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* اعمال فونت وزیر بر روی تمام اجزا */
+        body, button, input, textarea, select, h1, h2, h3, h4, h5, h6, p, span, div, a, li {
+            font-family: 'Vazirmatn', sans-serif !important;
+        }
+
+        body {
+            background-color: #020617;
+            color: #cbd5e1;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        /* افکت‌های بصری و سه بعدی */
+        .perspective-container { perspective: 2500px; }
+        .monitor-3d {
+            transform: rotateX(10deg) rotateY(-5deg);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.8);
+        }
+        .monitor-3d:hover {
+            transform: rotateX(0) rotateY(0) scale(1.01);
+            box-shadow: 0 0 80px rgba(59, 130, 246, 0.15);
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+        
+        .glass-card-hover { transition: all 0.3s ease; }
+        .glass-card-hover:hover {
+            background: rgba(30, 41, 59, 0.9);
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .iso-badge {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: black;
+            font-weight: bold;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #60a5fa, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: 0;
+            width: 60px;
+            height: 4px;
+            background: #3b82f6;
+            border-radius: 2px;
+        }
+        
+        /* اسکرول بار سفارشی */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Background Grid -->
+    <div class="fixed inset-0 bg-grid-pattern opacity-20 pointer-events-none z-0"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 glass-panel border-b-0 top-0 transition-all duration-300">
+        <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-emerald-600 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg">P</div>
+                <span class="text-2xl font-black text-white tracking-wider">پادکار</span>
+            </div>
+            <div class="hidden xl:flex gap-8 text-sm font-medium text-slate-400">
+                <a href="#core-ops" class="hover:text-white transition">تولید و لجستیک</a>
+                <a href="#ims-hub" class="hover:text-emerald-400 transition font-bold text-emerald-400">استاندارد و IMS</a>
+                <a href="#engineering" class="hover:text-amber-400 transition">مهندسی</a>
+                <a href="#hr-section" class="hover:text-purple-400 transition">سرمایه انسانی</a>
+            </div>
+            <a href="#contact" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-lg font-bold shadow-lg shadow-blue-500/20 transition-all hover:scale-105 text-sm">
+                درخواست دمو حضوری
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section: The Hook -->
+    <header class="relative pt-48 pb-20 overflow-hidden z-10">
+        <div class="max-w-[1400px] mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-700 bg-slate-900/50 backdrop-blur mb-8 animate-pulse-slow">
+                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                <span class="text-slate-300 text-xs font-bold">جامع‌ترین سیستم مدیریت کارخانه (نسخه Enterprise)</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-8">
+                کارخانه خود را با <span class="gradient-text">خیال راحت</span>
+                <br>
+                مدیریت کنید
+            </h1>
+            
+            <p class="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed mb-10">
+                وقتی تعداد سفارشات بالا می‌رود، اکسل و کاغذ دشمن شما می‌شوند.
+                <br>
+                <strong>پادکار</strong> به شما کمک می‌کند بدون آشفتگی تولید کنید، با قدرت نظارت و رهگیری کنید تمامی امور اتوماسیونی خود را یکپارچه نموده و بواسطه IMS بسیار قوی در مناقصات بزرگ، به خوبی شرکت نمایید.
+            </p>
+
+            <!-- Stats Bar (Quick Trust) -->
+            <div class="glass-panel p-6 rounded-2xl max-w-3xl mx-auto mb-12 border border-blue-500/20">
+                <div class="grid grid-cols-3 gap-6 text-center divide-x divide-x-reverse divide-slate-700">
+                    <div>
+                        <div class="text-3xl font-black text-emerald-400 mb-1 dir-ltr">+۳۰٪</div>
+                        <div class="text-xs text-slate-400">افزایش سرعت تولید</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-black text-blue-400 mb-1">۱۰۰٪</div>
+                        <div class="text-xs text-slate-400">ردیابی و کنترل کیفیت</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-black text-purple-400 mb-1">ISO</div>
+                        <div class="text-xs text-slate-400">آمادگی کامل ممیزی</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Monitor Showcase -->
+            <div class="perspective-container flex justify-center mb-10">
+                <div class="monitor-3d bg-slate-800 p-3 rounded-2xl border border-slate-700 relative w-full max-w-5xl">
+                    <div class="aspect-[16/9] bg-black rounded-lg overflow-hidden relative group">
+                        <!-- Main Dashboard Image -->
+                        <img src="main-dashboard.png" alt="نمای داشبورد مدیریتی پادکار" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Success Story Banner (Social Proof) -->
+    <section class="py-12 bg-gradient-to-r from-emerald-900/40 to-blue-900/40 border-y border-emerald-500/30 mb-20">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-6">
+                    <div class="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center flex-shrink-0 animate-pulse">
+                        <i class="fas fa-check-circle text-3xl text-emerald-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-1">تست شده در میدان واقعی</h3>
+                        <p class="text-emerald-300 text-sm">
+                            در حال اجرا در بزرگترین کارخانه تولید پیچ و مهره کشور با مدیریت روزانه +۵۰۰۰ قلم کالا
+                        </p>
+                    </div>
+                </div>
+                <div class="text-left">
+                    <button onclick="document.getElementById('contact').scrollIntoView()" class="text-white bg-emerald-600 hover:bg-emerald-500 px-6 py-3 rounded-xl font-bold text-sm transition shadow-lg shadow-emerald-900/20">
+                        داستان موفقیت را بشنوید
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain vs Solution (Before/After) -->
+    <section class="py-20 relative">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <h2 class="text-3xl font-black text-white text-center mb-16 section-title">تفاوت را احساس کنید</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Before -->
+                <div class="glass-panel p-8 rounded-2xl border-t-4 border-red-500/50 relative">
+                    <div class="absolute -top-6 right-8 bg-red-500 text-white px-4 py-1 rounded-full text-sm font-bold">وضعیت فعلی (سنتی)</div>
+                    <ul class="space-y-5 text-slate-400 mt-4">
+                        <li class="flex gap-3 items-center">
+                            <i class="fas fa-times text-red-500 text-xl"></i>
+                            <span>سفارشات در اکسل‌های جداگانه گم می‌شوند.</span>
+                        </li>
+                        <li class="flex gap-3 items-center">
+                            <i class="fas fa-times text-red-500 text-xl"></i>
+                            <span>واحد فروش از وضعیت دقیق تولید بی‌خبر است.</span>
+                        </li>
+                        <li class="flex gap-3 items-center">
+                            <i class="fas fa-times text-red-500 text-xl"></i>
+                            <span>اشتباه در شمارش کارتن‌ها و ارسال بار غلط.</span>
+                        </li>
+                        <li class="flex gap-3 items-center">
+                            <i class="fas fa-times text-red-500 text-xl"></i>
+                            <span>اضطراب و استرس همیشگی قبل از ممیزی ایزو.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- After -->
+                <div class="glass-panel p-8 rounded-2xl border-t-4 border-emerald-500 relative bg-emerald-900/10">
+                    <div class="absolute -top-6 right-8 bg-emerald-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg shadow-emerald-500/30">با سیستم پادکار</div>
+                    <ul class="space-y-5 text-slate-200 mt-4">
+                        <li class="flex gap-3 items-center">
+                            <i class="fas fa-check-circle text-emerald-400 text-xl"></i>
+                            <span>رصد لحظه‌ای تمام سفارشات در یک داشبورد واحد.</span>
+                        </li>
+                        <li class="flex gap-3 items-center">
+                            <i class="fas fa-check-circle text-emerald-400 text-xl"></i>
+                            <span>هماهنگی کامل بین انبار، تولید و فروش.</span>
+                        </li>
+                        <li class="flex gap-3 items-center">
+                            <i class="fas fa-check-circle text-emerald-400 text-xl"></i>
+                            <span>صفر شدن خطای شمارش با فرمول‌بندی هوشمند.</span>
+                        </li>
+                        <li class="flex gap-3 items-center">
+                            <i class="fas fa-check-circle text-emerald-400 text-xl"></i>
+                            <span>مستندسازی خودکار تمام فرآیندها برای ممیزی.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. PRODUCTION & LOGISTICS -->
+    <section id="core-ops" class="py-24 relative">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <h2 class="text-3xl font-black text-white section-title">نظم در تولید، دقت در تحویل</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Core Production -->
+                <div class="glass-panel p-8 rounded-2xl glass-card-hover lg:col-span-2">
+                    <div class="flex items-start gap-6">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 text-2xl flex-shrink-0">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-3">مدیریت هوشمند تولید (MES)</h3>
+                            <p class="text-slate-400 mb-6 text-sm leading-relaxed">
+                                سیستم به صورت خودکار به اپراتور می‌گوید چه چیزی را با چه اولویتی تولید کند. ماژول "مدیریت اسمبل" به شما اجازه می‌دهد محصولات پیچیده چند قطعه‌ای را به راحتی برنامه‌ریزی کنید.
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-300">
+                                <div class="bg-slate-800/50 p-3 rounded border-l-2 border-blue-500">
+                                    <strong>ردیابی کامل (Traceability):</strong>
+                                    <span class="block text-slate-400 text-xs mt-1">مشخصات کامل تولیدکننده، زمان و بچ مواد اولیه برای هر قطعه ثبت می‌شود.</span>
+                                </div>
+                                <div class="bg-slate-800/50 p-3 rounded border-l-2 border-blue-500">
+                                    <strong>تاریخچه تغییرات:</strong>
+                                    <span class="block text-slate-400 text-xs mt-1">هیچ تغییری در سفارش یا تولید بدون ثبت نام کاربر و زمان اتفاق نمی‌افتد.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Smart Packaging (The Humanized Remark Feature) -->
+                <div class="glass-panel p-8 rounded-2xl glass-card-hover border border-blue-500/30 bg-blue-900/5">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 text-2xl mb-4">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">خداحافظی با شمارش دستی</h3>
+                    <p class="text-slate-400 text-sm mb-4">
+                        دیگر نگران کسری بار یا کارتن‌های اشتباه نباشید.
+                    </p>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex gap-3 items-center text-slate-300 bg-slate-800 p-2 rounded-lg">
+                            <i class="fas fa-calculator text-green-400"></i>
+                            <span>محاسبه خودکار تعداد کارتن از روی فرمول</span>
+                        </div>
+                        <div class="flex gap-3 items-center text-slate-300 bg-slate-800 p-2 rounded-lg">
+                            <i class="fas fa-print text-green-400"></i>
+                            <span>چاپ لیبل استاندارد بدون تایپ دستی</span>
+                        </div>
+                        <div class="flex gap-3 items-center text-slate-300 bg-slate-800 p-2 rounded-lg">
+                            <i class="fas fa-truck-loading text-green-400"></i>
+                            <span>صدور مجوز خروج هوشمند و پیامکی</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. THE IMS SUPER SECTION -->
+    <section id="ims-hub" class="py-24 bg-slate-900/30 relative overflow-hidden border-y border-slate-800">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5"></div>
+        <div class="absolute right-0 top-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] -z-10"></div>
+
+        <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+            <div class="text-center mb-20">
+                <span class="text-emerald-500 font-bold tracking-widest text-sm uppercase border border-emerald-500/30 px-4 py-1 rounded-full bg-emerald-900/20">
+                    برگ برنده شما در مناقصات
+                </span>
+                <h2 class="text-4xl md:text-5xl font-black text-white mt-6 mb-6">
+                    زیرساخت کامل برای اخذ <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">گواهینامه‌های ISO</span>
+                </h2>
+                <p class="text-xl text-slate-400 max-w-4xl mx-auto leading-relaxed">
+                    پادکار فقط یک نرم‌افزار ثبت اطلاعات نیست؛ ما فرآیندهای استاندارد جهانی (HLS) را در دل سیستم کدنویسی کرده‌ایم.
+                    با این سیستم، ورود به <strong>وندور لیست شرکت‌های نفت، گاز و پتروشیمی</strong> دیگر یک رویا نیست.
+                </p>
+            </div>
+
+            <!-- PART A: ISO Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+                <div class="glass-panel p-6 rounded-xl border-t-4 border-emerald-500 group hover:bg-slate-800/80 transition">
+                    <span class="iso-badge">ISO 9001:2015</span>
+                    <h3 class="text-xl font-bold text-white mb-2">کیفیت و مدیریت</h3>
+                    <p class="text-xs text-slate-400 mb-3">مدیریت عدم انطباق (NC)، اقدامات اصلاحی و ممیزی داخلی.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border-t-4 border-emerald-500 group hover:bg-slate-800/80 transition">
+                    <span class="iso-badge">ISO 14001 & 45001</span>
+                    <h3 class="text-xl font-bold text-white mb-2">ایمنی و محیط زیست</h3>
+                    <p class="text-xs text-slate-400 mb-3">ارزیابی ریسک، تحلیل حوادث و RCA پیشرفته.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border-t-4 border-emerald-500 group hover:bg-slate-800/80 transition">
+                    <span class="iso-badge">ISO 10002 & 10004</span>
+                    <h3 class="text-xl font-bold text-white mb-2">رضایت مشتری</h3>
+                    <p class="text-xs text-slate-400 mb-3">سیستم ثبت شکایات و سنجش رضایت‌مندی.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border-t-4 border-emerald-500 group hover:bg-slate-800/80 transition">
+                    <span class="iso-badge">ISO 10015</span>
+                    <h3 class="text-xl font-bold text-white mb-2">آموزش</h3>
+                    <p class="text-xs text-slate-400 mb-3">نیازسنجی و سنجش اثربخشی دوره‌های آموزشی.</p>
+                </div>
+            </div>
+
+            <!-- PART B: Strategic Tools -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-3xl font-bold text-white mb-6">
+                        مدیریت استراتژیک <br>
+                        <span class="text-emerald-400">فراتر از یک کارخانه معمولی</span>
+                    </h3>
+                    <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+                        پادکار ابزارهای تحلیلی سطح بالایی را در اختیار مدیران ارشد قرار می‌دهد. شما می‌توانید مسیر حرکت شرکت را با داده‌های واقعی ترسیم کنید.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-5">
+                            <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center border border-slate-700 text-xl text-emerald-500"><i class="fas fa-chess"></i></div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">تحلیل محیطی (SWOT)</h4>
+                                <p class="text-sm text-slate-400 mt-1">شناسایی نقاط قوت، ضعف، فرصت‌ها و تهدیدهای بازار.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5">
+                            <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center border border-slate-700 text-xl text-emerald-500"><i class="fas fa-users-cog"></i></div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">مدیریت ذی‌نفعان</h4>
+                                <p class="text-sm text-slate-400 mt-1">مدیریت انتظارات سهامداران، دولت و همسایگان.</p>
+                            </div>
+                        </div>
+                         <div class="flex gap-5">
+                            <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center border border-slate-700 text-xl text-emerald-500"><i class="fas fa-balance-scale"></i></div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">ارزیابی ۳۶۰ درجه</h4>
+                                <p class="text-sm text-slate-400 mt-1">ارزیابی پیمانکاران، ارزیابی ما توسط مشتری و بالعکس.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Representation -->
+                <div class="relative">
+                    <div class="absolute inset-0 bg-emerald-500/20 blur-3xl rounded-full"></div>
+                    <div class="glass-panel p-8 rounded-2xl border border-emerald-500/30 relative">
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div class="bg-slate-900/80 p-4 rounded border-l-4 border-green-500">
+                                <div class="font-bold text-white">نقاط قوت</div>
+                                <div class="text-xs text-slate-500 mt-1">Strengths</div>
+                            </div>
+                            <div class="bg-slate-900/80 p-4 rounded border-l-4 border-red-500">
+                                <div class="font-bold text-white">نقاط ضعف</div>
+                                <div class="text-xs text-slate-500 mt-1">Weaknesses</div>
+                            </div>
+                            <div class="bg-slate-900/80 p-4 rounded border-l-4 border-blue-500">
+                                <div class="font-bold text-white">فرصت‌ها</div>
+                                <div class="text-xs text-slate-500 mt-1">Opportunities</div>
+                            </div>
+                            <div class="bg-slate-900/80 p-4 rounded border-l-4 border-yellow-500">
+                                <div class="font-bold text-white">تهدیدها</div>
+                                <div class="text-xs text-slate-500 mt-1">Threats</div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-6">
+                            <span class="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg">
+                                <i class="fas fa-check-circle ml-2"></i>
+                                آماده برای ممیزی نهایی
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ENGINEERING & PRODUCT -->
+    <section id="engineering" class="py-24 relative">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl font-black text-white section-title">مهندسی و تکوین محصول</h2>
+                    <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+                        ارتباط بین دفتر فنی و خط تولید معمولاً پر از چالش است. پادکار با ایجاد یک زبان مشترک، اطمینان می‌دهد که همیشه "آخرین نسخه نقشه" در خط تولید استفاده می‌شود.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-amber-500/10 rounded-lg flex items-center justify-center text-amber-500 text-xl"><i class="fas fa-drafting-compass"></i></div>
+                            <div>
+                                <h4 class="text-white font-bold">مدیریت نقشه‌ها و مستندات فنی</h4>
+                                <p class="text-slate-400 text-sm">آرشیو دیجیتال نقشه‌ها، استانداردها و اسپک‌های فنی متصل به هر محصول.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-amber-500/10 rounded-lg flex items-center justify-center text-amber-500 text-xl"><i class="fas fa-code-branch"></i></div>
+                            <div>
+                                <h4 class="text-white font-bold">کنترل ورژن و تغییرات</h4>
+                                <p class="text-slate-400 text-sm">جلوگیری از تولید با نقشه‌های قدیمی و منسوخ شده.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-amber-500/10 rounded-lg flex items-center justify-center text-amber-500 text-xl"><i class="fas fa-clipboard-list"></i></div>
+                            <div>
+                                <h4 class="text-white font-bold">کاتالوگ جامع محصول</h4>
+                                <p class="text-slate-400 text-sm">تعریف دقیق جنس، پوشش، ابعاد و مراحل تولید برای هر کد کالا.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-amber-500/20 blur-3xl rounded-full"></div>
+                     <div class="glass-panel p-4 rounded-xl border border-amber-500/30 aspect-video bg-slate-800 flex items-center justify-center relative overflow-hidden">
+                        <i class="fas fa-cogs text-6xl text-amber-500/50"></i>
+                        <!-- Abstract representation of Engineering drawings -->
+                        <div class="absolute bottom-4 left-4 right-4 h-1 bg-amber-500/30 rounded"></div>
+                        <div class="absolute bottom-8 left-4 w-1/2 h-1 bg-amber-500/30 rounded"></div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. HR & SAFETY -->
+    <section id="hr-section" class="py-24 bg-slate-900/30">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <h2 class="text-3xl font-black text-white section-title">سرمایه انسانی و ایمنی محیط کار</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition">
+                    <i class="fas fa-user-graduate text-4xl text-purple-400 mb-6"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">آموزش و اثربخشی</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        برگزاری دوره آموزشی به تنهایی کافی نیست. سیستم ما به شما می‌گوید آیا این آموزش واقعاً باعث بهبود عملکرد پرسنل شده است یا خیر (سنجش اثربخشی).
+                    </p>
+                </div>
+
+                <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition">
+                    <i class="fas fa-layer-group text-4xl text-pink-400 mb-6"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">ماتریس مهارت‌ها</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        شناسایی کنید کدام پرسنل برای کار با دستگاه‌های حساس صلاحیت دارند. ثبت سوابق مهارتی و نیازسنجی آموزشی هوشمند.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition">
+                    <i class="fas fa-hard-hat text-4xl text-yellow-400 mb-6"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">ایمنی و بهداشت (HSE)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        محیط کار ایمن یعنی توقف کمتر. ثبت دقیق حوادث، تحلیل علت ریشه‌ای و اقدامات پیشگیرانه برای حفاظت از جان پرسنل و تجهیزات.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators (Credential) -->
+    <section class="py-16 border-t border-slate-800 bg-black/40">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <h4 class="text-center text-slate-500 text-sm font-bold uppercase tracking-widest mb-10">توسعه یافته با استانداردهای ملی</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="flex flex-col items-center gap-2 group">
+                    <i class="fas fa-shield-alt text-4xl text-blue-500 group-hover:scale-110 transition"></i>
+                    <h5 class="text-white font-bold mt-2">برنامه نویسی پروژه های ملی (پلتفرم گمرک)</h5>
+                    <p class="text-slate-500 text-xs px-10"> طراحی شده توسط معماران سیستم‌های تراکنش بالای ملی</p>
+                </div>
+                <div class="flex flex-col items-center gap-2 group">
+                    <i class="fas fa-server text-4xl text-emerald-500 group-hover:scale-110 transition"></i>
+                    <h5 class="text-white font-bold mt-2">کاملا بومی و مستقل</h5>
+                    <p class="text-slate-500 text-xs px-10">پایگاه داده در اختیار خودتان</p>
+                </div>
+                <div class="flex flex-col items-center gap-2 group">
+                    <i class="fas fa-database text-4xl text-yellow-500 group-hover:scale-110 transition"></i>
+                    <h5 class="text-white font-bold mt-2">پایگاه داده قدرتمند</h5>
+                    <p class="text-slate-500 text-xs px-10">پردازش میلیون‌ها رکورد تولیدی بدون کندی</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Contact Form -->
+    <section id="contact" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-slate-950"></div>
+        <div class="max-w-3xl mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-4xl md:text-5xl font-black text-white mb-8">
+                آینده کارخانه شما </br> از اینجا
+                <span class="gradient-text">شروع می‌شود</span>
+            </h2>
+            <p class="text-xl text-slate-300 mb-12">
+                با ما همراه باشید و از نظم و آرامش در نظارت و تولید خود لذت ببرید
+            </p>
+            
+            <div class="glass-panel p-8 rounded-2xl shadow-2xl border border-slate-600">
+                <form action="https://formsubmit.co/majazibox@gmail.com" method="POST" class="space-y-4">
+                    <!-- تنظیمات مخفی برای ارسال بهتر -->
+                    <input type="hidden" name="_subject" value="درخواست مشاوره جدید از سایت پادکار">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" name="name" placeholder="نام و نام خانوادگی" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-3 text-white focus:border-blue-500 outline-none transition placeholder-slate-500" required>
+                        <input type="tel" name="phone" placeholder="شماره تماس" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-3 text-white focus:border-blue-500 outline-none transition placeholder-slate-500" required>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 text-white font-bold py-4 rounded-lg transition transform hover:-translate-y-1 shadow-lg text-lg">
+                        درخواست مشاوره رایگان
+                    </button>
+                    <p class="text-xs text-slate-500 mt-2">ارتباط با مدیر فنی گروه نرم افزاری ماناد - 09126009204 </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-10 text-center text-slate-600 text-sm border-t border-slate-900">
+        &copy; 2025 گروه نرم‌افزاری ماناد | توسعه سیستم‌های پیشرفته صنعتی
+		| 09126009204 رحیمی
+    </footer>
+
+</body>
+</html>
