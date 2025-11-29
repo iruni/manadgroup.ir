@@ -67,6 +67,20 @@
 </head>
 <body class="antialiased">
 
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" class="scroll-progress" style="transform: scaleX(0);"></div>
+
+    <!-- Section Navigation Dots -->
+    <nav class="section-indicators" id="section-nav">
+        <button class="section-dot active" data-section="hero" title="خانه"></button>
+        <button class="section-dot" data-section="stats" title="آمار"></button>
+        <button class="section-dot" data-section="modules" title="ماژول‌ها"></button>
+        <button class="section-dot" data-section="ims" title="ISO"></button>
+        <button class="section-dot" data-section="features" title="ویژگی‌ها"></button>
+        <button class="section-dot" data-section="why-us" title="چرا ما"></button>
+        <button class="section-dot" data-section="contact" title="تماس"></button>
+    </nav>
+
     <!-- Floating Background Elements -->
     <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div class="absolute top-20 right-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl float-element"></div>
@@ -107,7 +121,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-bg relative min-h-screen flex items-center pt-32 pb-20">
+    <header id="hero" class="hero-bg relative min-h-screen min-h-[100dvh] flex items-center pt-32 pb-20 snap-section-full">
         <div class="max-w-7xl mx-auto px-6 w-full">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <!-- Left Content -->
@@ -143,7 +157,7 @@
                         </a>
                         <a href="#demo-video" class="glass hover:bg-white/10 text-white px-8 py-4 rounded-xl font-bold transition-all flex items-center gap-3">
                             <i class="fas fa-play-circle text-blue-400"></i>
-                            <span>درخواست دمو</span>
+                            <span>مشاهده دمو</span>
                         </a>
                     </div>
 
@@ -209,61 +223,101 @@
     </header>
 
     <!-- Stats Section - Value Propositions -->
-    <section id="stats" class="py-20 relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="glass rounded-3xl p-10 md:p-14" data-aos="fade-up">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+    <section id="stats" class="py-16 md:py-20 relative snap-section-full flex flex-col justify-center">
+        <div class="max-w-7xl mx-auto px-6 w-full">
+            <!-- Section Header -->
+            <div class="text-center mb-10 md:mb-14" data-aos="fade-up">
+                <span class="text-blue-400 font-bold text-sm tracking-wider uppercase">دستاوردها</span>
+                <h2 class="text-2xl md:text-4xl font-black text-white mt-3 mb-4">
+                    تحول در <span class="gradient-text">عملکرد کارخانه</span>
+                </h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
+                    شاخص‌های کلیدی که مشتریان ما پس از استفاده از پادکار تجربه کرده‌اند
+                </p>
+            </div>
+            
+            <!-- Stats Grid -->
+            <div class="glass rounded-3xl p-6 md:p-10 lg:p-14" data-aos="fade-up" data-aos-delay="100">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
                     <!-- Stat 1 -->
                     <div class="text-center group">
-                        <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
                         </div>
-                        <div class="text-3xl md:text-4xl font-black text-white mb-2">۱۰۰٪</div>
-                        <div class="text-slate-400 text-sm font-medium">ردیابی سفارشات</div>
-                        <div class="text-slate-500 text-xs mt-1">از ثبت تا تحویل</div>
+                        <div class="text-2xl md:text-4xl font-black text-white mb-1 md:mb-2">۱۰۰٪</div>
+                        <div class="text-slate-400 text-xs md:text-sm font-medium">ردیابی سفارشات</div>
+                        <div class="text-slate-500 text-[10px] md:text-xs mt-1 hidden sm:block">از ثبت تا تحویل</div>
                     </div>
                     <!-- Stat 2 -->
                     <div class="text-center group">
-                        <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:scale-110 transition-transform">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
                             </svg>
                         </div>
-                        <div class="text-3xl md:text-4xl font-black text-emerald-400 mb-2">+۳۵٪</div>
-                        <div class="text-slate-400 text-sm font-medium">افزایش بهره‌وری</div>
-                        <div class="text-slate-500 text-xs mt-1">در خط تولید</div>
+                        <div class="text-2xl md:text-4xl font-black text-emerald-400 mb-1 md:mb-2">+۳۵٪</div>
+                        <div class="text-slate-400 text-xs md:text-sm font-medium">افزایش بهره‌وری</div>
+                        <div class="text-slate-500 text-[10px] md:text-xs mt-1 hidden sm:block">در خط تولید</div>
                     </div>
                     <!-- Stat 3 -->
                     <div class="text-center group">
-                        <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg shadow-amber-500/30 group-hover:scale-110 transition-transform">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg shadow-amber-500/30 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
                             </svg>
                         </div>
-                        <div class="text-3xl md:text-4xl font-black text-amber-400 mb-2">۸+</div>
-                        <div class="text-slate-400 text-sm font-medium">استاندارد ISO</div>
-                        <div class="text-slate-500 text-xs mt-1">آماده ممیزی</div>
+                        <div class="text-2xl md:text-4xl font-black text-amber-400 mb-1 md:mb-2">۸+</div>
+                        <div class="text-slate-400 text-xs md:text-sm font-medium">استاندارد ISO</div>
+                        <div class="text-slate-500 text-[10px] md:text-xs mt-1 hidden sm:block">آماده ممیزی</div>
                     </div>
                     <!-- Stat 4 -->
                     <div class="text-center group">
-                        <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/30 group-hover:scale-110 transition-transform">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/30 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
                         </div>
-                        <div class="text-3xl md:text-4xl font-black text-purple-400 mb-2">-۸۰٪</div>
-                        <div class="text-slate-400 text-sm font-medium">کاهش خطا</div>
-                        <div class="text-slate-500 text-xs mt-1">در شمارش و ارسال</div>
+                        <div class="text-2xl md:text-4xl font-black text-purple-400 mb-1 md:mb-2">-۸۰٪</div>
+                        <div class="text-slate-400 text-xs md:text-sm font-medium">کاهش خطا</div>
+                        <div class="text-slate-500 text-[10px] md:text-xs mt-1 hidden sm:block">در شمارش و ارسال</div>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Trust Indicators -->
+            <div class="mt-8 md:mt-12 flex flex-wrap justify-center gap-4 md:gap-8" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex items-center gap-2 text-slate-500 text-xs md:text-sm">
+                    <svg class="w-4 h-4 md:w-5 md:h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>+۱۰ سال تجربه</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-500 text-xs md:text-sm">
+                    <svg class="w-4 h-4 md:w-5 md:h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>پشتیبانی ۲۴/۷</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-500 text-xs md:text-sm">
+                    <svg class="w-4 h-4 md:w-5 md:h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>نصب محلی</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-500 text-xs md:text-sm">
+                    <svg class="w-4 h-4 md:w-5 md:h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>بدون وابستگی خارجی</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Problem/Solution Section -->
-    <section class="py-24 relative overflow-hidden">
+    <section id="problem-solution" class="py-24 relative overflow-hidden snap-section-full">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
                 <span class="text-blue-400 font-bold text-sm tracking-wider uppercase">مشکل و راه‌حل</span>
@@ -1113,7 +1167,7 @@
     </section>
 
     <!-- Why Us Section -->
-    <section id="why-us" class="py-24 relative overflow-hidden">
+    <section id="why-us" class="py-24 relative overflow-hidden snap-section-full">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/20 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-6 relative">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -1234,7 +1288,7 @@
     </section>
 
     <!-- Target Industries Section -->
-    <section class="py-24 relative overflow-hidden">
+    <section id="industries" class="py-24 relative overflow-hidden snap-section-full">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
                 <span class="text-blue-400 font-bold text-sm tracking-wider uppercase">صنایع هدف</span>
@@ -1313,7 +1367,7 @@
     </section>
 
     <!-- Implementation Timeline -->
-    <section class="py-24 relative">
+    <section id="timeline" class="py-24 relative snap-section-full">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/10 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-6 relative">
             <div class="text-center mb-16" data-aos="fade-up">
@@ -1367,7 +1421,7 @@
     </section>
 
     <!-- Comparison Table -->
-    <section class="py-24 relative">
+    <section id="comparison" class="py-24 relative snap-section-full">
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
                 <span class="text-amber-400 font-bold text-sm tracking-wider uppercase">مقایسه</span>
@@ -1439,7 +1493,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-24 relative">
+    <section id="faq" class="py-24 relative snap-section-auto">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
                 <span class="text-purple-400 font-bold text-sm tracking-wider uppercase">سوالات متداول</span>
@@ -1513,7 +1567,7 @@
     </section>
 
     <!-- Pricing/CTA Section -->
-    <section class="py-24 relative">
+    <section id="cta" class="py-24 relative snap-section-full">
         <div class="max-w-7xl mx-auto px-6">
             <div class="glass rounded-3xl p-12 md:p-16 text-center relative overflow-hidden" data-aos="fade-up">
                 <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-emerald-600/10 to-amber-600/10"></div>
@@ -1558,7 +1612,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 relative overflow-hidden">
+    <section id="contact" class="py-24 relative overflow-hidden snap-section-full">
         <div class="absolute inset-0 bg-gradient-to-t from-blue-950/50 to-transparent"></div>
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-500/10 rounded-full blur-[150px] -z-10"></div>
         
@@ -1743,4 +1797,3 @@
     <script src="main.js"></script>
 </body>
 </html>
-

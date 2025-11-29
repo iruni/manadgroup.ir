@@ -187,3 +187,96 @@ function initFloatingContact() {
 document.addEventListener('DOMContentLoaded', function() {
     initFloatingContact();
 });
+
+
+/**
+ * Scroll Progress Bar
+ */
+function initScrollProgress() {
+    const progressBar = document.getElementById('scroll-progress');
+    if (!progressBar) return;
+    
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = scrollTop / docHeight;
+        progressBar.style.transform = 'scaleX(' + scrollPercent + ')';
+    });
+}
+
+/**
+ * Section Navigation Dots
+ */
+function initSectionNav() {
+    const dots = document.querySelectorAll('.section-dot');
+    const sections = ['hero', 'stats', 'modules', 'ims', 'features', 'why-us', 'contact'];
+    
+    if (dots.length === 0) return;
+    
+    // Click handler for dots
+    dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+            const sectionId = this.getAttribute('data-section');
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+    
+    // Update active dot on scroll
+    var observerOptions = {
+        root: null,
+        rootMargin: '-40% 0px -40% 0px',
+        threshold: 0
+    };
+    
+    var sectionObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                var sectionId = entry.target.id;
+                dots.forEach(function(dot) {
+                    if (dot.getAttribute('data-section') === sectionId) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+    
+    sections.forEach(function(sectionId) {
+        var section = document.getElementById(sectionId);
+        if (section) {
+            sectionObserver.observe(section);
+        }
+    });
+}
+
+/**
+ * Keyboard Navigation for Sections
+ */
+function initKeyboardNav() {
+    var sections = document.querySelectorAll('[class*="snap-section"]');
+    var currentIndex = 0;
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+            e.preventDefault();
+            currentIndex = Math.min(currentIndex + 1, sections.length - 1);
+            sections[currentIndex].scrollIntoView({ behavior: 'smooth' });
+        } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+            e.preventDefault();
+            currentIndex = Math.max(currentIndex - 1, 0);
+            sections[currentIndex].scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+}
+
+// Initialize all scroll features
+document.addEventListener('DOMContentLoaded', function() {
+    initScrollProgress();
+    initSectionNav();
+    initKeyboardNav();
+});
