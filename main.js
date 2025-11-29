@@ -138,3 +138,52 @@ function validateForm(formId) {
     
     return isValid;
 }
+
+/**
+ * Floating Contact Button Toggle
+ */
+function initFloatingContact() {
+    const toggle = document.getElementById('contact-toggle');
+    const options = document.getElementById('contact-options');
+    const iconChat = document.getElementById('contact-icon-chat');
+    const iconClose = document.getElementById('contact-icon-close');
+    
+    if (!toggle || !options) return;
+    
+    let isOpen = false;
+    
+    toggle.addEventListener('click', function() {
+        isOpen = !isOpen;
+        
+        if (isOpen) {
+            options.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+            options.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            iconChat.classList.add('opacity-0', 'rotate-90');
+            iconClose.classList.remove('opacity-0');
+            iconClose.classList.add('rotate-90');
+        } else {
+            options.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+            options.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            iconChat.classList.remove('opacity-0', 'rotate-90');
+            iconClose.classList.add('opacity-0');
+            iconClose.classList.remove('rotate-90');
+        }
+    });
+    
+    // Close when clicking outside
+    document.addEventListener('click', function(e) {
+        if (isOpen && !e.target.closest('#floating-contact')) {
+            isOpen = false;
+            options.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+            options.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            iconChat.classList.remove('opacity-0', 'rotate-90');
+            iconClose.classList.add('opacity-0');
+            iconClose.classList.remove('rotate-90');
+        }
+    });
+}
+
+// Add to DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+    initFloatingContact();
+});
