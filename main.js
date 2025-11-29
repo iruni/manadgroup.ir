@@ -140,13 +140,12 @@ function validateForm(formId) {
 }
 
 /**
- * Floating Contact Button Toggle with Tooltip
+ * Floating Contact Widget - Professional
  */
 function initFloatingContact() {
     const toggle = document.getElementById('contact-toggle');
     const options = document.getElementById('contact-options');
     const tooltip = document.getElementById('contact-tooltip');
-    const tooltipClose = document.getElementById('tooltip-close');
     const badge = document.getElementById('contact-badge');
     const iconChat = document.getElementById('contact-icon-chat');
     const iconClose = document.getElementById('contact-icon-close');
@@ -156,50 +155,54 @@ function initFloatingContact() {
     let isOpen = false;
     let tooltipShown = false;
     
-    // Show tooltip after 5 seconds
+    // Show tooltip after 3 seconds
     setTimeout(function() {
         if (!isOpen && !tooltipShown && tooltip) {
-            tooltip.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
-            tooltip.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            tooltip.classList.remove('opacity-0', 'translate-y-2');
+            tooltip.classList.add('opacity-100', 'translate-y-0');
             tooltipShown = true;
         }
-    }, 5000);
+    }, 3000);
     
-    // Auto-hide tooltip after 8 seconds
+    // Hide tooltip after 10 seconds
     setTimeout(function() {
         hideTooltip();
-    }, 13000);
+    }, 10000);
     
     function hideTooltip() {
         if (tooltip) {
-            tooltip.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
-            tooltip.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-        }
-        if (badge) {
-            badge.style.display = 'none';
+            tooltip.classList.add('opacity-0', 'translate-y-2');
+            tooltip.classList.remove('opacity-100', 'translate-y-0');
         }
     }
     
     function openOptions() {
         isOpen = true;
         hideTooltip();
-        options.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
-        options.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
-        iconChat.classList.add('opacity-0', 'rotate-90');
-        iconClose.classList.remove('opacity-0');
-        iconClose.classList.add('rotate-90');
+        if (badge) badge.style.display = 'none';
+        options.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4', 'scale-95');
+        options.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0', 'scale-100');
+        if (iconChat) iconChat.classList.add('opacity-0', 'rotate-90', 'scale-0');
+        if (iconClose) {
+            iconClose.classList.remove('opacity-0');
+            iconClose.classList.add('rotate-180');
+        }
     }
     
     function closeOptions() {
         isOpen = false;
-        options.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
-        options.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-        iconChat.classList.remove('opacity-0', 'rotate-90');
-        iconClose.classList.add('opacity-0');
-        iconClose.classList.remove('rotate-90');
+        options.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4', 'scale-95');
+        options.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0', 'scale-100');
+        if (iconChat) iconChat.classList.remove('opacity-0', 'rotate-90', 'scale-0');
+        if (iconClose) {
+            iconClose.classList.add('opacity-0');
+            iconClose.classList.remove('rotate-180');
+        }
     }
     
-    toggle.addEventListener('click', function() {
+    toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        hideTooltip();
         if (isOpen) {
             closeOptions();
         } else {
@@ -210,6 +213,13 @@ function initFloatingContact() {
     // Close when clicking outside
     document.addEventListener('click', function(e) {
         if (isOpen && !e.target.closest('#floating-contact')) {
+            closeOptions();
+        }
+    });
+    
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isOpen) {
             closeOptions();
         }
     });
@@ -311,4 +321,53 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollProgress();
     initSectionNav();
     initKeyboardNav();
+});
+
+
+/**
+ * Theme Switcher - Dark/Light Mode
+ * Saves preference to localStorage for persistence across pages
+ */
+function initThemeSwitcher() {
+    const toggle = document.getElementById('theme-toggle');
+    const iconDark = document.getElementById('theme-icon-dark');
+    const iconLight = document.getElementById('theme-icon-light');
+    
+    if (!toggle) return;
+    
+    // Check saved theme or default to dark
+    const savedTheme = localStorage.getItem('manad-theme') || 'dark';
+    applyTheme(savedTheme);
+    
+    toggle.addEventListener('click', function() {
+        const currentTheme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+        localStorage.setItem('manad-theme', newTheme);
+    });
+    
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            document.body.classList.add('light-theme');
+            if (iconDark) iconDark.classList.add('hidden');
+            if (iconLight) iconLight.classList.remove('hidden');
+        } else {
+            document.body.classList.remove('light-theme');
+            if (iconDark) iconDark.classList.remove('hidden');
+            if (iconLight) iconLight.classList.add('hidden');
+        }
+    }
+}
+
+// Apply theme immediately on page load (before DOMContentLoaded)
+(function() {
+    const savedTheme = localStorage.getItem('manad-theme');
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+    }
+})();
+
+// Initialize theme switcher
+document.addEventListener('DOMContentLoaded', function() {
+    initThemeSwitcher();
 });
