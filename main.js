@@ -140,45 +140,77 @@ function validateForm(formId) {
 }
 
 /**
- * Floating Contact Button Toggle
+ * Floating Contact Button Toggle with Tooltip
  */
 function initFloatingContact() {
     const toggle = document.getElementById('contact-toggle');
     const options = document.getElementById('contact-options');
+    const tooltip = document.getElementById('contact-tooltip');
+    const tooltipClose = document.getElementById('tooltip-close');
+    const badge = document.getElementById('contact-badge');
     const iconChat = document.getElementById('contact-icon-chat');
     const iconClose = document.getElementById('contact-icon-close');
     
     if (!toggle || !options) return;
     
     let isOpen = false;
+    let tooltipShown = false;
+    
+    // Show tooltip after 5 seconds
+    setTimeout(function() {
+        if (!isOpen && !tooltipShown && tooltip) {
+            tooltip.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+            tooltip.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            tooltipShown = true;
+        }
+    }, 5000);
+    
+    // Auto-hide tooltip after 8 seconds
+    setTimeout(function() {
+        hideTooltip();
+    }, 13000);
+    
+    function hideTooltip() {
+        if (tooltip) {
+            tooltip.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+            tooltip.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+        }
+        if (badge) {
+            badge.style.display = 'none';
+        }
+    }
+    
+    function openOptions() {
+        isOpen = true;
+        hideTooltip();
+        options.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+        options.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+        iconChat.classList.add('opacity-0', 'rotate-90');
+        iconClose.classList.remove('opacity-0');
+        iconClose.classList.add('rotate-90');
+    }
+    
+    function closeOptions() {
+        isOpen = false;
+        options.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        options.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+        iconChat.classList.remove('opacity-0', 'rotate-90');
+        iconClose.classList.add('opacity-0');
+        iconClose.classList.remove('rotate-90');
+    }
     
     toggle.addEventListener('click', function() {
-        isOpen = !isOpen;
-        
         if (isOpen) {
-            options.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
-            options.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
-            iconChat.classList.add('opacity-0', 'rotate-90');
-            iconClose.classList.remove('opacity-0');
-            iconClose.classList.add('rotate-90');
+            closeOptions();
         } else {
-            options.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
-            options.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-            iconChat.classList.remove('opacity-0', 'rotate-90');
-            iconClose.classList.add('opacity-0');
-            iconClose.classList.remove('rotate-90');
+            openOptions();
         }
     });
     
     // Close when clicking outside
     document.addEventListener('click', function(e) {
         if (isOpen && !e.target.closest('#floating-contact')) {
-            isOpen = false;
-            options.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
-            options.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-            iconChat.classList.remove('opacity-0', 'rotate-90');
-            iconClose.classList.add('opacity-0');
-            iconClose.classList.remove('rotate-90');
+            closeOptions();
         }
     });
 }
@@ -209,7 +241,7 @@ function initScrollProgress() {
  */
 function initSectionNav() {
     const dots = document.querySelectorAll('.section-dot');
-    const sections = ['hero', 'stats', 'modules', 'ims', 'features', 'why-us', 'contact'];
+    const sections = ['hero', 'stats', 'problem-solution', 'modules', 'ims', 'features', 'why-us', 'industries', 'timeline', 'comparison', 'faq', 'cta', 'contact'];
     
     if (dots.length === 0) return;
     
