@@ -1,0 +1,230 @@
+/* ========================================
+   پادکار - استایل‌های اصلی
+   Padkar Enterprise Platform Styles
+   ======================================== */
+
+/* Font Faces */
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url('fonts/Vazir.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url('fonts/Vazir-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Base Styles */
+* { 
+    font-family: 'Vazirmatn', system-ui, sans-serif !important; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+}
+
+body {
+    background: linear-gradient(180deg, #0a0f1a 0%, #050810 100%);
+    color: #e2e8f0;
+    overflow-x: hidden;
+}
+
+/* Animated Background */
+.hero-bg {
+    background: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(16, 185, 129, 0.08), transparent),
+        radial-gradient(ellipse 50% 30% at 20% 80%, rgba(245, 158, 11, 0.05), transparent);
+}
+
+/* Glass Morphism */
+.glass {
+    background: rgba(17, 24, 39, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-light {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, #60a5fa 0%, #34d399 50%, #fbbf24 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-x 4s ease infinite;
+}
+
+/* Cards */
+.feature-card {
+    background: linear-gradient(145deg, rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 0.5));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.15);
+}
+
+/* Monitor 3D Effect */
+.monitor-container {
+    perspective: 2000px;
+}
+
+.monitor-3d {
+    transform: rotateX(8deg) rotateY(-3deg);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.monitor-3d:hover {
+    transform: rotateX(0) rotateY(0) scale(1.02);
+}
+
+/* ISO Badge */
+.iso-badge {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #000;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+/* Module Cards */
+.module-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.module-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+}
+
+/* Stats Counter Animation */
+.stat-number {
+    font-variant-numeric: tabular-nums;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { 
+    width: 8px; 
+}
+
+::-webkit-scrollbar-track { 
+    background: #0a0f1a; 
+}
+
+::-webkit-scrollbar-thumb { 
+    background: #1e293b; 
+    border-radius: 4px; 
+}
+
+::-webkit-scrollbar-thumb:hover { 
+    background: #334155; 
+}
+
+/* Navigation Active State */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #3b82f6;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Floating Elements */
+.float-element {
+    animation: float 6s ease-in-out infinite;
+}
+
+.float-element:nth-child(2) { 
+    animation-delay: -2s; 
+}
+
+.float-element:nth-child(3) { 
+    animation-delay: -4s; 
+}
+
+/* Glow Effects */
+.glow-blue { 
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.3); 
+}
+
+.glow-emerald { 
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.3); 
+}
+
+.glow-gold { 
+    box-shadow: 0 0 40px rgba(245, 158, 11, 0.3); 
+}
+
+/* Timeline */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    right: -30px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    background: #3b82f6;
+    border-radius: 50%;
+    border: 3px solid #0a0f1a;
+}
+
+/* Fallback icons */
+.icon-fallback { 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+/* ========================================
+   Animations / Keyframes
+   ======================================== */
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+}
+
+@keyframes gradient-x {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}

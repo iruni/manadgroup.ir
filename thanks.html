@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>با تشکر | پادکار</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/x-icon" href="48.ico">
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    
+    <!-- Local Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0a0f1a',
+                            darker: '#050810',
+                            card: '#111827',
+                            accent: '#3b82f6',
+                            gold: '#f59e0b',
+                            emerald: '#10b981',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased min-h-screen flex items-center justify-center">
+
+    <!-- Floating Background Elements -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute top-20 right-10 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10 max-w-2xl mx-auto px-6 py-20 text-center">
+        <div class="glass rounded-3xl p-12" data-aos="zoom-in" data-aos-duration="800">
+            <!-- Success Icon -->
+            <div class="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center shadow-lg shadow-emerald-500/30">
+                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+            </div>
+
+            <h1 class="text-3xl md:text-4xl font-black text-white mb-4">
+                با تشکر از شما!
+            </h1>
+            
+            <p class="text-xl text-slate-400 mb-8 leading-relaxed">
+                درخواست شما با موفقیت ثبت شد.
+                <br>
+                کارشناسان ما در اسرع وقت با شما تماس خواهند گرفت.
+            </p>
+
+            <!-- Info Box -->
+            <div class="bg-slate-800/50 rounded-xl p-6 mb-8 text-right">
+                <h3 class="text-white font-bold mb-3 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    مراحل بعدی:
+                </h3>
+                <ul class="space-y-2 text-slate-400 text-sm">
+                    <li class="flex items-center gap-2">
+                        <span class="w-6 h-6 bg-emerald-500/20 rounded-full flex items-center justify-center text-emerald-400 text-xs font-bold">۱</span>
+                        <span>بررسی درخواست توسط تیم فنی</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="w-6 h-6 bg-emerald-500/20 rounded-full flex items-center justify-center text-emerald-400 text-xs font-bold">۲</span>
+                        <span>تماس کارشناس برای هماهنگی جلسه</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="w-6 h-6 bg-emerald-500/20 rounded-full flex items-center justify-center text-emerald-400 text-xs font-bold">۳</span>
+                        <span>ارائه دمو و مشاوره رایگان</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="flex flex-wrap justify-center gap-6 mb-8">
+                <a href="tel:09126009204" class="flex items-center gap-2 text-slate-400 hover:text-white transition">
+                    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                    <span class="dir-ltr">0912-600-9204</span>
+                </a>
+                <a href="mailto:PostElectronic@yahoo.com" class="flex items-center gap-2 text-slate-400 hover:text-white transition">
+                    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <span>PostElectronic@yahoo.com</span>
+                </a>
+            </div>
+
+            <!-- Back Button -->
+            <a href="index.html" class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-blue-500/25 transition-all hover:scale-105">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+                <span>بازگشت به صفحه اصلی</span>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-8 text-slate-500 text-sm">
+            <div class="flex items-center justify-center gap-2">
+                <img src="logo.png" alt="پادکار" class="w-6 h-6 object-contain rounded">
+                <span>پادکار | پلتفرم یکپارچه مدیریت صنعتی</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 600
+        });
+    </script>
+</body>
+</html>
