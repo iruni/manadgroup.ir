@@ -17,7 +17,7 @@
     
     <!-- External Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+    <!-- Font Awesome removed - using SVG icons instead -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     
     <!-- Local Styles -->
@@ -109,7 +109,7 @@
 
                 <div class="flex items-center gap-4">
                     <a href="tel:09126009204" class="hidden md:flex items-center gap-2 text-slate-400 hover:text-white transition text-sm">
-                        <i class="fas fa-phone"></i>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                         <span class="dir-ltr">0912-600-9204</span>
                     </a>
                     <a href="#contact" class="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow-lg shadow-blue-500/25 transition-all hover:scale-105 hover:shadow-blue-500/40">
@@ -153,10 +153,10 @@
                     <div class="flex flex-wrap gap-4 mb-12">
                         <a href="#contact" class="group bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-blue-500/25 transition-all hover:scale-105 flex items-center gap-3">
                             <span>شروع رایگان</span>
-                            <i class="fas fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+                            <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
                         </a>
                         <a href="#demo-video" class="glass hover:bg-white/10 text-white px-8 py-4 rounded-xl font-bold transition-all flex items-center gap-3">
-                            <i class="fas fa-play-circle text-blue-400"></i>
+                            <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
                             <span>مشاهده دمو</span>
                         </a>
                     </div>
@@ -164,15 +164,15 @@
                     <!-- Trust Badges -->
                     <div class="flex flex-wrap items-center gap-6 text-sm text-slate-500">
                         <div class="flex items-center gap-2">
-                            <i class="fas fa-shield-check text-emerald-500"></i>
+                            <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                             <span>امنیت سازمانی</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <i class="fas fa-server text-blue-500"></i>
+                            <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
                             <span>نصب محلی</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <i class="fas fa-headset text-amber-500"></i>
+                            <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                             <span>پشتیبانی ۲۴/۷</span>
                         </div>
                     </div>
@@ -190,7 +190,7 @@
                         <div class="absolute -left-8 top-1/4 glass p-4 rounded-xl animate-float" style="animation-delay: -1s;">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-chart-line text-emerald-400"></i>
+                                    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
                                 </div>
                                 <div>
                                     <div class="text-xs text-slate-400">بهره‌وری</div>
@@ -201,7 +201,7 @@
                         <div class="absolute -right-8 bottom-1/4 glass p-4 rounded-xl animate-float" style="animation-delay: -3s;">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-boxes text-blue-400"></i>
+                                    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                                 </div>
                                 <div>
                                     <div class="text-xs text-slate-400">سفارشات</div>
@@ -217,7 +217,7 @@
         <!-- Scroll Indicator -->
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
             <a href="#stats" class="text-slate-500 hover:text-white transition">
-                <i class="fas fa-chevron-down text-2xl"></i>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </a>
         </div>
     </header>
@@ -330,12 +330,12 @@
                 <!-- Before -->
                 <div class="feature-card p-8 rounded-2xl relative" data-aos="fade-left" style="--accent-color: #ef4444;">
                     <div class="absolute -top-4 right-8 bg-red-500 text-white px-5 py-1.5 rounded-full text-sm font-bold shadow-lg">
-                        <i class="fas fa-times-circle ml-2"></i>روش سنتی
+                        <svg class="w-4 h-4 inline ml-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>روش سنتی
                     </div>
                     <ul class="space-y-5 mt-6">
                         <li class="flex gap-4 items-start">
                             <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-times text-red-400"></i>
+                                <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                             </div>
                             <div>
                                 <span class="text-white font-medium">سفارشات در اکسل‌های پراکنده</span>
@@ -344,7 +344,7 @@
                         </li>
                         <li class="flex gap-4 items-start">
                             <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-times text-red-400"></i>
+                                <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                             </div>
                             <div>
                                 <span class="text-white font-medium">بی‌خبری از وضعیت تولید</span>
@@ -353,7 +353,7 @@
                         </li>
                         <li class="flex gap-4 items-start">
                             <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-times text-red-400"></i>
+                                <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                             </div>
                             <div>
                                 <span class="text-white font-medium">خطا در شمارش و ارسال</span>
@@ -362,7 +362,7 @@
                         </li>
                         <li class="flex gap-4 items-start">
                             <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-times text-red-400"></i>
+                                <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                             </div>
                             <div>
                                 <span class="text-white font-medium">استرس قبل از ممیزی</span>
@@ -375,12 +375,12 @@
                 <!-- After -->
                 <div class="feature-card p-8 rounded-2xl relative border-emerald-500/30" data-aos="fade-right" style="--accent-color: #10b981;">
                     <div class="absolute -top-4 right-8 bg-emerald-500 text-white px-5 py-1.5 rounded-full text-sm font-bold shadow-lg shadow-emerald-500/30">
-                        <i class="fas fa-check-circle ml-2"></i>با پادکار
+                        <svg class="w-4 h-4 inline ml-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>با پادکار
                     </div>
                     <ul class="space-y-5 mt-6">
                         <li class="flex gap-4 items-start">
                             <div class="w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-emerald-400"></i>
+                                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                             </div>
                             <div>
                                 <span class="text-white font-medium">داشبورد یکپارچه</span>
@@ -389,7 +389,7 @@
                         </li>
                         <li class="flex gap-4 items-start">
                             <div class="w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-emerald-400"></i>
+                                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                             </div>
                             <div>
                                 <span class="text-white font-medium">ردیابی لحظه‌ای</span>
@@ -398,7 +398,7 @@
                         </li>
                         <li class="flex gap-4 items-start">
                             <div class="w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-emerald-400"></i>
+                                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                             </div>
                             <div>
                                 <span class="text-white font-medium">محاسبات هوشمند</span>
@@ -407,7 +407,7 @@
                         </li>
                         <li class="flex gap-4 items-start">
                             <div class="w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fas fa-check text-emerald-400"></i>
+                                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                             </div>
                             <div>
                                 <span class="text-white font-medium">مستندسازی خودکار</span>
@@ -896,7 +896,7 @@
         <div class="max-w-7xl mx-auto px-6 relative">
             <div class="text-center mb-16" data-aos="fade-up">
                 <span class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-4 py-2 rounded-full text-sm font-bold mb-6">
-                    <i class="fas fa-award"></i>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                     برگ برنده شما در مناقصات
                 </span>
                 <h2 class="text-3xl md:text-5xl font-black text-white mb-6">
@@ -1059,7 +1059,7 @@
                         </div>
                         <div class="text-center">
                             <div class="inline-flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-emerald-500/30">
-                                <i class="fas fa-check-circle"></i>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                                 <span>آماده برای ممیزی نهایی</span>
                             </div>
                         </div>
@@ -1573,7 +1573,7 @@
                 <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-emerald-600/10 to-amber-600/10"></div>
                 <div class="relative">
                     <span class="inline-flex items-center gap-2 bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm font-bold mb-6">
-                        <i class="fas fa-gift"></i>
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd"/><path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"/></svg>
                         پیشنهاد ویژه
                     </span>
                     <h2 class="text-3xl md:text-5xl font-black text-white mb-6">
@@ -1585,26 +1585,26 @@
 
                     <div class="flex flex-wrap justify-center gap-6 mb-10">
                         <div class="flex items-center gap-2 text-slate-400">
-                            <i class="fas fa-check-circle text-emerald-400"></i>
+                            <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                             <span>دمو رایگان</span>
                         </div>
                         <div class="flex items-center gap-2 text-slate-400">
-                            <i class="fas fa-check-circle text-emerald-400"></i>
+                            <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                             <span>نصب و راه‌اندازی</span>
                         </div>
                         <div class="flex items-center gap-2 text-slate-400">
-                            <i class="fas fa-check-circle text-emerald-400"></i>
+                            <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                             <span>آموزش کاربران</span>
                         </div>
                         <div class="flex items-center gap-2 text-slate-400">
-                            <i class="fas fa-check-circle text-emerald-400"></i>
+                            <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                             <span>پشتیبانی ۲۴/۷</span>
                         </div>
                     </div>
 
                     <a href="#contact" class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-lg shadow-blue-500/25 transition-all hover:scale-105 hover:shadow-blue-500/40">
                         <span>درخواست مشاوره رایگان</span>
-                        <i class="fas fa-arrow-left"></i>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
                     </a>
                 </div>
             </div>
@@ -1682,7 +1682,7 @@
                     <button type="submit"
                         class="w-full bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 text-white font-bold py-5 rounded-xl transition-all hover:scale-[1.02] shadow-lg shadow-blue-500/25 text-lg flex items-center justify-center gap-3">
                         <span>ارسال درخواست</span>
-                        <i class="fas fa-paper-plane"></i>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
                     </button>
                 </form>
 
